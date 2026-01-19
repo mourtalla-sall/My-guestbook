@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 19 jan. 2026 à 10:28
+-- Généré le : lun. 19 jan. 2026 à 10:39
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
@@ -48,7 +48,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `login` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `passworld` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id`, `login`, `passworld`) VALUES
+(1, 'admin', 'admin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
