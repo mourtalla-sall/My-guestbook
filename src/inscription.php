@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php';  // Vérifie si le fichier existe
 
 if (isset($_POST['submit'])) {
-    $login = htmlspecialchars($_POST['login']); // éviter le piratage et les injections
+    $login = trim(htmlspecialchars($_POST['login'])); // éviter le piratage et les injections
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
