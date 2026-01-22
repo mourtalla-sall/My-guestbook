@@ -41,6 +41,9 @@ if (isset($_POST['submit'])) {
     <title>Inscription</title>
 </head>
 <body>
+    <?php
+        include("navbar.html")
+    ?>
     <h1>Inscription</h1>
     <form method="post" action="">
         <label for="login">Login :</label><br>

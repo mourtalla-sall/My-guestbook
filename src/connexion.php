@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Vérification du mdp
-        if ($user && password_verify($password, $user['password'])) {
+        if ($user && password_verify($password, $user['passworld'])) {
             $_SESSION['id'] = $user['id'];
             $_SESSION['login'] = $user['login'];
             
@@ -38,6 +38,9 @@ if (isset($_POST['submit'])) {
     <title>Connexion</title>
 </head>
 <body>
+     <?php
+        include("navbar.html")
+    ?>
     <h1>Connexion</h1>
     <form method="post" action="">
         <label for="login">Login :</label><br>
