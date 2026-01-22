@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Message</title>
-    <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
         <input type="date" name="date" required><br><br>
 
         <input type="submit" name="submit" value="Envoyer">
-         <button><a href="index.php">Annuler</a></button>
+         <button><a href="../index.php">Annuler</a></button>
     </form>
 
     </main>

@@ -48,10 +48,11 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Mon Profil</title>
+      <link rel="stylesheet" href="styles.css">
 </head>
 <body>
      <?php
-    include('navbar.html')
+    include('navbar.php')
     ?>
     <h1>Paramètres du compte</h1>
     <p><a href="connexion">connexion</a></p>

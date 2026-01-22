@@ -1,6 +1,8 @@
 <?php
+
 session_start();
 require_once 'db.php';
+$index = '../index.php';
 
 
 if (isset($_POST['submit'])) {
@@ -41,11 +43,11 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Inscription</title>
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
  <?php
-    include('navbar.html')
+    include('navbar.php')
     ?>
 <header>
     <h1>Inscription</h1>

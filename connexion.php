@@ -30,10 +30,11 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="styles.css">
+     <link rel="stylesheet" href="./src/navbar.css">
 </head>
 <body>
  <?php
-    include('navbar.html')
+    include('navbar.php')
     ?>
 <header>
     <h1>Connexion</h1>

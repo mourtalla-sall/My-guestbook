@@ -6,16 +6,16 @@
     <title>Hôtels à Marseille</title>
 
      <?php
-    include('navbar.html')
+    include('navbar.php')
     ?>
      <?php
-    include('hotel.php');
+    include('./hotel.php');
 
-    include('redMessage.php')
+    include('./redMessage.php')
     ?>
     
    <?php
-    include('footer.html')
+    include('./footer.html')
     ?>
 
 </body>

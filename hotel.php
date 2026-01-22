@@ -20,7 +20,7 @@ $hotels = [
 <head>
     <meta charset="UTF-8">
     <title>Hôtels à Marseille</title>
-    <link rel="stylesheet" href="hotel.css">
+    <link rel="stylesheet" href="./src/hotel.css">
    
 </head>
 
