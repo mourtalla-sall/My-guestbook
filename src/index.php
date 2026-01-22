@@ -2,8 +2,8 @@
 
 session_start();
 require_once 'db.php';
+ $id_user = $_SESSION['id'];
 
-$id_user = $_SESSION['id'];
 
 $sql = $pdo->prepare("SELECT user.login as nom_user, message.message as nom_message, date
     FROM message
@@ -20,12 +20,7 @@ $data = $sql->fetchAll();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
-    
-    <?php include("navbar.html"); ?>    
-
-
    <?php
 foreach ($data as $key => $value) {
     $nomUser = $value['nom_user'];

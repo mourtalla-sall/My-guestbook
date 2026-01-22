@@ -1,7 +1,10 @@
 <?php
-
 session_start();
 require_once 'db.php';
+
+if (!isset($_SESSION['id'])) {
+    die("Vous devez être connecté pour poster un message.");
+}
 
 if (isset($_POST['submit'])) {
     $id_user = $_SESSION['id'];
@@ -10,10 +13,7 @@ if (isset($_POST['submit'])) {
 
 
     if (!empty($message) && !empty($id_user) && !empty($date)) {
-            $insert_data = $pdo-> prepare('INSERT INTO message (message, date, id_user) VALUES (:message, :date, :id_user) ');
-            $insert_data->bindValue(":message", $message, PDO::PARAM_STR);
-            $insert_data->bindValue(":message", $message, PDO::PARAM_STR);
-            $insert_data->bindValue(":message", $message, PDO::PARAM_STR);
+            $insert_data = $pdo-> prepare('INSERT INTO message (message, date, id_user) VALUES (?, ?, ?) ');
             if ( $insert_data->execute([$message, $date, $id_user])) {
                 echo "Message enregistrer avec succés";
             }else{
@@ -34,26 +34,26 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Message</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
     <h1>Ajouter un Message</h1>
-    <form class="form-message" method="post" action="">
-        <div>
-            <label for="login">Messages</label><br>
-            <textarea name="message" rows="4" ></textarea>
-        </div>
+    <form method="post" action="">
+       
+        <label for="login">Messages</label><br>
+        <textarea name="message" rows="4" ></textarea><br><br>
 
-        <div>
-            <label for="confirm_password">Date</label>
-            <input type="date" name="date" required>
-        </div>
+        <label for="confirm_password">Date</label><br>
+        <input type="date" name="date" required><br><br>
 
         <input type="submit" name="submit" value="Envoyer">
     </form>
 
 </body>
+
 </html>
