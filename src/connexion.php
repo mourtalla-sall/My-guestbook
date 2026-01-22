@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['login'] = $user['login'];
             
             echo "Connexion réussie ! Bonjour " . $_SESSION['login'];
-            echo "<br><a href='#'>Accéder au Livre d'Or</a>";
+            echo "<br><a href='index.php'>Accéder au Livre d'Or</a>";
         } else {
             echo "Login ou mot de passe incorrect.";
         }

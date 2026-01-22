@@ -10,7 +10,10 @@ if (isset($_POST['submit'])) {
 
 
     if (!empty($message) && !empty($id_user) && !empty($date)) {
-            $insert_data = $pdo-> prepare('INSERT INTO message (message, date, id_user) VALUES (?, ?, ?) ');
+            $insert_data = $pdo-> prepare('INSERT INTO message (message, date, id_user) VALUES (:message, :date, :id_user) ');
+            $insert_data->bindValue(":message", $message, PDO::PARAM_STR);
+            $insert_data->bindValue(":message", $message, PDO::PARAM_STR);
+            $insert_data->bindValue(":message", $message, PDO::PARAM_STR);
             if ( $insert_data->execute([$message, $date, $id_user])) {
                 echo "Message enregistrer avec succés";
             }else{
@@ -34,16 +37,20 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <title>Message</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
     <h1>Ajouter un Message</h1>
-    <form method="post" action="">
-       
-        <label for="login">Messages</label><br>
-        <textarea name="message" rows="4" ></textarea><br><br>
+    <form class="form-message" method="post" action="">
+        <div>
+            <label for="login">Messages</label><br>
+            <textarea name="message" rows="4" ></textarea>
+        </div>
 
-        <label for="confirm_password">Date</label><br>
-        <input type="date" name="date" required><br><br>
+        <div>
+            <label for="confirm_password">Date</label>
+            <input type="date" name="date" required>
+        </div>
 
         <input type="submit" name="submit" value="Envoyer">
     </form>
