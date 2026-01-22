@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,7 +9,13 @@
     include('navbar.html')
     ?>
      <?php
-    include('hotel.php')
+    include('hotel.php');
+
+    include('redMessage.php')
+    ?>
+    
+   <?php
+    include('footer.html')
     ?>
 
 </body>

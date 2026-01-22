@@ -65,9 +65,7 @@ $hotels = [
 
 </div>
 
-<footer>
-    © 2026 – Hôtel Marseille
-</footer>
+
 
 </body>
 </html>
