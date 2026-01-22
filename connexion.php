@@ -32,15 +32,13 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- <?php
-    include('navbar.html')
-    ?>
+
 <header>
     <h1>Connexion</h1>
 </header>
 
 <main>
-    <form method="post" >
+    <form method="post">
 
         
 

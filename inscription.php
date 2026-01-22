@@ -44,9 +44,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- <?php
-    include('navbar.html')
-    ?>
+
 <header>
     <h1>Inscription</h1>
 </header>

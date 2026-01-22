@@ -50,6 +50,9 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
     <title>Mon Profil</title>
 </head>
 <body>
+     <?php
+    include('navbar.html')
+    ?>
     <h1>Paramètres du compte</h1>
     <p><a href="connexion">connexion</a></p>
 
