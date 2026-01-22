@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
       <?php
-    include('navbar.html')
+    include('navbar.php')
     ?>
     <header>
     <h1>Ajouter un Message</h1>
@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
         <input type="date" name="date" required><br><br>
 
         <input type="submit" name="submit" value="Envoyer">
-         <button><a href="../index.php">Annuler</a></button>
+         <button><a href="index.php">Annuler</a></button>
     </form>
 
     </main>
