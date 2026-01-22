@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
             if ($check->rowCount() == 0) {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);  // On hash le mot de passe
 
-                $insert = $pdo->prepare('INSERT INTO user (login, passworld) VALUES (?, ?)');
+                $insert = $pdo->prepare(query: 'INSERT INTO user (login, password) VALUES (?, ?)');
                 
                 if ($insert->execute([$login, $hashed_password])) {
                     echo "Inscription réussie ! <a href='connexion.php'>Connectez-vous ici</a>";

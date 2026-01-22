@@ -1,0 +1,10 @@
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.menu-container {
+    max-width: 600px;
+}

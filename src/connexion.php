@@ -13,12 +13,14 @@ if (isset($_POST['submit'])) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Vérification du mdp
-        if ($user && password_verify($password, $user['passworld'])) {
+        if ($user && password_verify($password, $user['password'])) {
             $_SESSION['id'] = $user['id'];
             $_SESSION['login'] = $user['login'];
             
             echo "Connexion réussie ! Bonjour " . $_SESSION['login'];
-            echo "<br><a href='#'>Accéder au Livre d'Or</a>";
+            echo "<br><a href='profil'>Changer vos information</a>";
+            echo "<br><a href='deconnexion'>deconnectez-vous</a>";
+
         } else {
             echo "Login ou mot de passe incorrect.";
         }
