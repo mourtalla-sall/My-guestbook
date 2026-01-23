@@ -21,8 +21,8 @@ $data = $sql->fetchAll();
     <title>Les Avis</title>
 </head>
 <body>
-     
-     <?php
+
+<?php
 foreach ($data as $key => $value) {
     $nomUser = $value['nom_user'];
     $message = $value['nom_message']; 

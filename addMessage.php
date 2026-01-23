@@ -2,11 +2,15 @@
 session_start();
 require_once 'db.php';
 
+
 if (!isset($_SESSION['id'])) {
     header('Location: connexion.php');
     exit();
 
 }
+
+$erreur = "";
+$success = "";
 
 if (isset($_POST['submit'])) {
     $id_user = $_SESSION['id'];
@@ -27,25 +31,42 @@ if (isset($_POST['submit'])) {
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <title>Message</title>
+   <link rel="stylesheet" href="styles.css">
+
 </head>
-
 <body>
+      <?php
+    include('navbar.php')
+    ?>
+    <header>
     <h1>Ajouter un Message</h1>
-    <form method="post" action="">
 
+    <?php if (!empty($erreur)) : ?>
+        <p class="error"><?= $erreur ?></p>
+    <?php endif; ?>
+
+    <?php if (!empty($success)) : ?>
+        <p class="success"><?= $success ?></p>
+    <?php endif; ?>
+</header>
+
+    <main>
+        <form method="post" action="">
+       
         <label for="login">Messages</label><br>
-        <textarea name="message" rows="4"></textarea><br><br>
+        <textarea name="message" rows="4" ></textarea><br><br>
 
 
         <input type="submit" name="submit" value="Envoyer">
+         <button><a href="index.php">Annuler</a></button>
     </form>
 
+    </main>
 </body>
-
 </html>
