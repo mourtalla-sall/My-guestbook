@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
         $stmt->execute([$login]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($user && password_verify($password, $user['passworld'])) {
+        if ($user && password_verify($password, $user['password'])) {
             $_SESSION['id'] = $user['id'];
             $_SESSION['login'] = $user['login'];
             $message = "<span style='color:green'>Connexion réussie !</span>";

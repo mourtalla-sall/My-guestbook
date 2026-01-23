@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
             if ($check->rowCount() === 0) {
                 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
                 $insert = $pdo->prepare(
-                    "INSERT INTO user (login, passworld) VALUES (?, ?)"
+                    "INSERT INTO user (login, password) VALUES (?, ?)"
                 );
 
                 if ($insert->execute([$login, $hashed_password])) {
