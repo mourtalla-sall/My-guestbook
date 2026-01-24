@@ -1,16 +1,25 @@
 <?php
-
-session_start();
+if(!isset($_SESSION)){
+    
+    session_start();
+}
 require_once 'db.php';
+
+if (!isset($_SESSION['id'])) {
+    // Redirection si non connecté (optionnel)
+    // header('Location: login.php');
+    // exit;
+}
+
 $id_user = $_SESSION['id'];
 
-
-$sql = $pdo->prepare("SELECT user.login as nom_user, message.message as nom_message, date
+$sql = $pdo->prepare("
+    SELECT user.login AS nom_user, message.message AS nom_message, message.date
     FROM message
-    JOIN user
-    ON message.id_user = user.id");
+    JOIN user ON message.id_user = user.id
+");
 $sql->execute();
-$data = $sql->fetchAll(); 
+$data = $sql->fetchAll();
 
 ?>
 <!DOCTYPE html>

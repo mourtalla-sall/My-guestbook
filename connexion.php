@@ -1,6 +1,8 @@
 <?php
-session_start();
-require_once 'db.php';
+if(!isset($_SESSION)){
+    
+    session_start();
+}require_once 'db.php';
 
 
 if (isset($_POST['submit'])) {
@@ -30,13 +32,12 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <title>Connexion</title>
     <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" href="./src/navbar.css">
 </head>
 <body>
  <?php
     include('navbar.php')
     ?>
-<header>
+<header class="inscription-header">
     <h1>Connexion</h1>
 </header>
 

@@ -1,79 +1,173 @@
- * {
-            box-sizing: border-box;
-        }
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-        }
+/* BODY */
+body {
+    font-family: 'Georgia', serif;
+    background-color: #f5f5f5;
+}
 
-      
-        /* CONTENU */
-        .container {
-            width: 90%;
-            margin: auto;
-            padding: 30px 0;
-        }
+/* CONTENEUR PRINCIPAL */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px 20px;
+}
 
-        h1, h2 {
-            color: #222;
-        }
+/* IMAGE HERO */
+.hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
 
-        p {
-            color: #555;
-            max-width: 800px;
-        }
+/* DESCRIPTION */
+.description {
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-style: italic;
+    color: #FFA500; /* ORANGE */
+}
 
-        /* SERVICES */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 40px;
-        }
+/* TITRE SERVICES */
+.services-title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    font-style: italic;
+    color: #FFA500; /* ORANGE */
+}
 
-        .service {
-            background: white;
-            padding: 15px;
-            border-radius: 6px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+/* SERVICES */
+.services {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+}
 
-        /* HOTELS */
-        .hotel {
-            background: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
+.service {
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #FFA500; /* ORANGE */
+}
 
-        .hotel h3 {
-            margin: 0;
-        }
+.service img {
+    display: block;
+    margin: 0 auto 15px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
 
-        .note {
-            color: #27ae60;
-            font-weight: bold;
-        }
+/* HOTELS */
+.hotels-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
 
-        .prix {
-            font-size: 22px;
-            font-weight: bold;
-            color: #e67e22;
-        }
+/* CARTE HOTEL */
+.hotel {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
-        /* FOOTER */
-        footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-        }
+.hotel img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.hotel-info {
+    padding: 20px;
+    background: linear-gradient(to bottom, #f8f8f8, #e8e8e8);
+}
+
+/* NOM HOTEL */
+.hotel-info h3 {
+    color: #FFA500; /* ORANGE */
+}
+
+/* NOTE */
+.note {
+    font-size: 16px;
+    color: #FFA500; /* ORANGE */
+}
+
+/* ETOILES */
+.stars {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* FOOTER HOTEL */
+.hotel-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LIEU */
+.lieu {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #FFA500; /* ORANGE */
+}
+
+/* PRIX */
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFA500; /* ORANGE */
+}
+
+/* GALERIE */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    margin-bottom: 40px;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+/* FORCE TEXTE ORANGE */
+.description,
+.services-title,
+.service div,
+.hotel-info h3,
+.hotel-info span,
+.lieu,
+.price {
+    color: rgb(185, 179, 179) !important;
+}
+

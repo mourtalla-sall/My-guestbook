@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,16 +5,12 @@
     <title>Hôtels à Marseille</title>
 
      <?php
-    include('navbar.php')
-    ?>
-     <?php
-    include('./hotel.php');
+    require_once('navbar.php');
 
-    include('./redMessage.php')
-    ?>
-    
-   <?php
-    include('./footer.html')
+    require_once('./hotel.php');
+
+
+    require_once('./footer.html');
     ?>
 
 </body>

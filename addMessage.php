@@ -1,6 +1,8 @@
 <?php
-session_start();
-require_once 'db.php';
+if(!isset($_SESSION)){
+    
+    session_start();
+}require_once 'db.php';
 
 $erreur = "";
 $success = "";
@@ -40,7 +42,7 @@ if (isset($_POST['submit'])) {
       <?php
     include('navbar.php')
     ?>
-    <header>
+    <header class="inscription-header">
     <h1>Ajouter un Message</h1>
 
     <?php if (!empty($erreur)) : ?>

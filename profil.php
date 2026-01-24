@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 require_once 'db.php';
 
 // Vérification connexion
@@ -25,7 +27,6 @@ if (isset($_POST['update_login'])) {
 }
 
 // Nouveau mot de passe
-
 if (isset($_POST['update_password'])) {
     $new_password = $_POST['password'];
     
@@ -38,9 +39,13 @@ if (isset($_POST['update_password'])) {
     }
 }
 
+// Récupérer le login de l'utilisateur
 $stmt = $pdo->prepare('SELECT login FROM user WHERE id = ?');
 $stmt->execute([$id_user]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!$user) {
+    $user['login'] = ""; // Eviter les erreurs si user non trouvé
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,22 +53,22 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <title>Mon Profil</title>
-      <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-     <?php
-    include('navbar.php')
-    ?>
-    <h1>Paramètres du compte</h1>
-    <p><a href="connexion">connexion</a></p>
+    <?php include('navbar.php'); ?>
 
-    <?php if(!empty($message_status)) echo "<p><strong>$message_status</strong></p>"; ?>
+    <header class="inscription-header">
+        <h1>Paramètres du compte</h1>
+    </header>
+
+    <?php if(!empty($message_status)) echo "<p class='success'>$message_status</p>"; ?>
 
     <hr>
 
-    <div>
+    <div class="profile-section">
         <p><strong>Nom d'utilisateur</strong></p>
-        
+
         <?php if (isset($_GET['edit']) && $_GET['edit'] == 'login'): ?>
             <form method="post" action="profil.php">
                 <input type="text" name="login" value="<?php echo htmlspecialchars($user['login']); ?>" required>
@@ -78,7 +83,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     <hr>
 
-    <div>
+    <div class="profile-section">
         <p><strong>Mot de passe</strong></p>
 
         <?php if (isset($_GET['edit']) && $_GET['edit'] == 'password'): ?>
