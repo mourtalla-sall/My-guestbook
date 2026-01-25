@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
  <?php
-    include('navbar.php')
+    include('./navigation.php')
     ?>
 <header>
     <h1>Connexion</h1>

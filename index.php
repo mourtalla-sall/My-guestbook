@@ -6,7 +6,7 @@
     <title>Hôtels à Marseille</title>
 
      <?php
-    include('navbar.php')
+    include('./navigation.php')
     ?>
      <?php
     include('./hotel.php');

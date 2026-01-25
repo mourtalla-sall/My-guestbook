@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== NAVBAR ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d1d5db;
+    padding: 0 40px;
+    height: 65px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo h2 {
+    color: #d4af37; /* couleur dorée */
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-menu li a {
+    color: #d4af37; /* couleur dorée pour les liens */
+    text-decoration: underline;
+    font-size: 17px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #b8922f; /* doré plus foncé au hover */
+}
+
+.nav-menu li a.active {
+    color: #d4af37; /* doré pour le lien actif */
+    font-weight: 600;
+}
+
+/* Menu hamburger caché par défaut */
+.checkbtn {
+    display: none;
+    font-size: 26px;
+    color: #1f2937;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#check {
+    display: none;
+}
+
+/* ===== RESPONSIVE - Mobile ===== */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 0 20px;
+        height: 60px;
+    }
+
+    .logo h2 {
+        font-size: 20px;
+    }
+
+    /* Afficher le bouton hamburger */
+    .checkbtn {
+        display: block;
+    }
+
+    /* Menu mobile */
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background-color: #d1d5db;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 40px;
+        gap: 0;
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+        overflow-y: auto;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu li a {
+        font-size: 18px;
+    }
+
+    /* Afficher le menu quand checkbox est coché */
+    #check:checked ~ .nav-menu {
+        transform: translateX(0);
+    }
+}
+
+/* ===== Tablette ===== */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 0 30px;
+    }
+
+    .nav-menu {
+        gap: 20px;
+    }
+
+    .nav-menu li a {
+        font-size: 16px;
+    }
+}

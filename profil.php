@@ -52,7 +52,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 </head>
 <body>
      <?php
-    include('navbar.php')
+    include('./navigation.php')
     ?>
     <h1>Paramètres du compte</h1>
     <p><a href="connexion">connexion</a></p>

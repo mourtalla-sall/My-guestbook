@@ -1,5 +1,5 @@
 /* RESET */
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,13 +7,13 @@
 }
 
 /* BODY */
-body {
+/* body {
     min-height: 100vh;
     background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-                url("photo-1577806293.jpg") no-repeat center/cover;
-    display: flex;
-    flex-direction: column;
-}
+                url("photo-1577806293.jpg") no-repeat center/cover; */
+    /* display: flex; */
+    /* flex-direction: column; */
+/* } */ */
 
 /* HEADER */
 header {
@@ -110,4 +110,28 @@ input[type="submit"] {
 
 /* FOOTER */
 
+/* ===== BOUTON AJOUTER MESSAGE ===== */
+.addMessage {
+    background: #d4af37; /* doré */
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
 
+/* Lien à l'intérieur du bouton */
+.addMessage a {
+    text-decoration: none;
+    color: white; /* texte blanc */
+    font-weight: 600;
+}
+
+/* Hover */
+.addMessage:hover {
+    background: #b8922f; /* doré plus foncé */
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
+}
