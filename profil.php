@@ -56,18 +56,18 @@ if (!$user) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <?php include('navbar.php'); ?>
+     <?php
+    include('./navigation.php')
+    ?>
+    <h1>Paramètres du compte</h1>
 
-    <header class="inscription-header">
-        <h1>Paramètres du compte</h1>
-    </header>
-
+  
     <?php if(!empty($message_status)) echo "<p class='success'>$message_status</p>"; ?>
 
-    <hr>
 
-    <div class="profile-section">
-        <p><strong>Nom d'utilisateur</strong></p>
+       <main>
+        <form class="form-profil">
+             <p><strong>Nom d'utilisateur</strong></p>
 
         <?php if (isset($_GET['edit']) && $_GET['edit'] == 'login'): ?>
             <form method="post" action="profil.php">
@@ -79,26 +79,21 @@ if (!$user) {
             <span><?php echo htmlspecialchars($user['login']); ?></span>
             <a href="profil.php?edit=login"><button>Modifier</button></a>
         <?php endif; ?>
-    </div>
-
-    <hr>
-
-    <div class="profile-section">
-        <p><strong>Mot de passe</strong></p>
+             <p><strong>Mot de passe</strong></p>
 
         <?php if (isset($_GET['edit']) && $_GET['edit'] == 'password'): ?>
-            <form method="post" action="profil.php">
                 <input type="password" name="password" placeholder="Nouveau mot de passe" required>
                 <input type="submit" name="update_password" value="Enregistrer">
                 <a href="profil.php">Annuler</a>
-            </form>
         <?php else: ?>
             <span>********</span>
             <a href="profil.php?edit=password"><button>Modifier</button></a>
         <?php endif; ?>
-    </div>
 
     <hr>
-    <p><a href="deconnexion.php">Se déconnecter</a></p>
+
+    <p><a class="btn-lien" href="deconnexion.php">Se déconnecter</a></p>
+        </form>
+       </main>
 </body>
 </html>

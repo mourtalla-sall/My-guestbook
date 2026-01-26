@@ -4,26 +4,30 @@ if(!isset($_SESSION)){
     session_start();
 }require_once 'db.php';
 
+
+if (!isset($_SESSION['id'])) {
+    header('Location: connexion.php');
+    exit();
+
+}
+
 $erreur = "";
 $success = "";
 
 if (isset($_POST['submit'])) {
-    $id_user = $_SESSION['id'] ?? null;
-    $message = $_POST['message'] ?? '';
-    $date = $_POST['date'] ?? '';
+    $id_user = $_SESSION['id'];
+    $message = htmlspecialchars($_POST['message']);
 
-    if (!empty($message) && !empty($id_user) && !empty($date)) {
-        $insert_data = $pdo->prepare(
-            'INSERT INTO message (message, date, id_user) VALUES (?, ?, ?)'
-        );
-
-        if ($insert_data->execute([$message, $date, $id_user])) {
-            $success = "Message enregistré avec succès";
+    if (!empty($message)) {
+        $insert_data = $pdo->prepare('INSERT INTO message (message, date, id_user) VALUES (?, NOW(), ?) ');
+        
+        if ($insert_data->execute([$message, $id_user])) {
+            echo "Message enregistré avec succès !";
         } else {
-            $erreur = "Erreur lors de l'ajout du message";
+            echo "Erreur lors de l'ajout du message.";
         }
     } else {
-        $erreur = "Tous les champs sont requis";
+        echo "Le message ne peut pas être vide.";
     }
 }
 ?>
@@ -39,11 +43,14 @@ if (isset($_POST['submit'])) {
 
 </head>
 <body>
-      <?php
-    include('navbar.php')
+     <?php
+    include('./navigation.php')
     ?>
-    <header class="inscription-header">
+<header class="inscription-header">
     <h1>Ajouter un Message</h1>
+</header>
+
+
 
     <?php if (!empty($erreur)) : ?>
         <p class="error"><?= $erreur ?></p>
@@ -60,11 +67,9 @@ if (isset($_POST['submit'])) {
         <label for="login">Messages</label><br>
         <textarea name="message" rows="4" ></textarea><br><br>
 
-        <label for="confirm_password">Date</label><br>
-        <input type="date" name="date" required><br><br>
 
         <input type="submit" name="submit" value="Envoyer">
-         <button><a href="index.php">Annuler</a></button>
+        <button class="addMessage"><a href="index.php">Annuler</a></button>
     </form>
 
     </main>

@@ -1,51 +1,63 @@
 <?php
-if(!isset($_SESSION)){
-    
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
 require_once 'db.php';
 
 if (!isset($_SESSION['id'])) {
-    // Redirection si non connecté (optionnel)
     // header('Location: login.php');
     // exit;
 }
 
-$id_user = $_SESSION['id'];
-
 $sql = $pdo->prepare("
-    SELECT user.login AS nom_user, message.message AS nom_message, message.date
-    FROM message
-    JOIN user ON message.id_user = user.id
+    SELECT 
+        u.login AS nom_user,
+        m.message AS nom_message,
+        m.date
+    FROM message m
+    JOIN user u ON m.id_user = u.id
+    ORDER BY m.date DESC
 ");
 $sql->execute();
-$data = $sql->fetchAll();
-
+$articles = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Avis</title>
+    <link rel="stylesheet" href="messageRead.css">
 </head>
 <body>
-     
-     <?php
-foreach ($data as $key => $value) {
-    $nomUser = $value['nom_user'];
-    $message = $value['nom_message']; 
-    $date = $value['date'];
-    
-    echo "<article>";
-    echo "<h4>Posté par $nomUser le $date </h4>";
-    echo "<p>$message</p>";
-    echo "</article>";
-}
 
+<?php include('./navigation.php'); ?>
 
-?>
+<section>
+    <?php if (empty($articles)): ?>
+        <p>Aucun message pour le moment.</p>
+    <?php endif; ?>
 
-    <button><a href="addMessage.php">addMessage</a></button>
+    <?php foreach ($articles as $value): ?>
+        <article>
+            <h4>
+                <span class="user-info">
+                    Posté par <?= htmlspecialchars($value['nom_user']) ?>
+                </span>
+                <span class="date-info">
+                    <?= htmlspecialchars($value['date']) ?>
+                </span>
+            </h4>
+
+            <p><?= nl2br(htmlspecialchars($value['nom_message'])) ?></p>
+        </article>
+    <?php endforeach; ?>
+</section>
+<?php include('./pagination.php'); ?>
+
+<a class="addMessage" href="addMessage.php">Ajouter un message</a>
+
 </body>
 </html>

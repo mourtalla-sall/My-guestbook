@@ -1,31 +1,42 @@
 <?php
-if(!isset($_SESSION)){
-    
+// Démarrage de la session avant tout
+if (!isset($_SESSION)) {
     session_start();
-}require_once 'db.php';
+}
 
+// Inclusion des fichiers nécessaires
+require_once './navigation.php'; // correction du nom du fichier
+require_once 'db.php';
 
+// Initialisation du message
+$message = "";
+
+// Traitement du formulaire de connexion
 if (isset($_POST['submit'])) {
     $login = htmlspecialchars($_POST['login']);
     $password = $_POST['password'];
 
     if (!empty($login) && !empty($password)) {
+        // Vérification du login dans la base de données
         $stmt = $pdo->prepare("SELECT * FROM user WHERE login = ?");
         $stmt->execute([$login]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['passworld'])) {
+            // Connexion réussie
             $_SESSION['id'] = $user['id'];
             $_SESSION['login'] = $user['login'];
             $message = "<span style='color:green'>Connexion réussie !</span>";
         } else {
-            $message = "Login ou mot de passe incorrect.";
+            // Login ou mot de passe incorrect
+            $message = "<span style='color:red'>Login ou mot de passe incorrect.</span>";
         }
     } else {
-        $message = "Veuillez remplir tous les champs.";
+        $message = "<span style='color:red'>Veuillez remplir tous les champs.</span>";
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -34,37 +45,33 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- <?php
-    include('navbar.php')
-    ?>
-<header class="inscription-header">
+
+
     <h1>Connexion</h1>
-</header>
+
 
 <main>
-    <form method="post" >
+    <?php
+    // Affichage du message si présent
+    if (!empty($message)) {
+        echo "<p>$message</p>";
+    }
+    ?>
 
-        
+    <form method="post">
+        <label for="login">Login</label>
+        <input type="text" id="login" name="login" required>
 
-        <label>Login</label>
-        <input type="text" name="login" required>
-
-        <label>Mot de passe</label>
-        <input type="password" name="password" required>
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required>
 
         <input type="submit" name="submit" value="Se connecter">
-    <p class="account">
-    Pas de compte ?
-    <a href="inscription.php">S'inscrire</a>
-    </p>
 
-
+        <p class="account">
+            Pas de compte ? <a href="inscription.php">S'inscrire</a>
+        </p>
     </form>
 </main>
-
-
-  
-
 
 </body>
 </html>

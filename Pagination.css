@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.pagination a,
+.pagination span {
+    padding: 8px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    background: #e5e7eb; /* fond neutre */
+    color: #d4af37; /* texte doré */
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background: #d4af37; /* doré plein au hover */
+    color: white;
+}
+
+.pagination .active {
+    background: linear-gradient(90deg, #d4af37, #b8922f, #f0c75e); /* dégradé doré */
+    color: white;
+}

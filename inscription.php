@@ -1,9 +1,53 @@
-<?php include('navbar.php'); ?>
+<?php
 
 
-<header class="inscription-header">
+if (isset($_POST['submit'])) {
+    $login = htmlspecialchars($_POST['login']);
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm_password'];
+
+    if (!empty($login) && !empty($password) && !empty($confirm_password)) {
+        if ($password === $confirm_password) {
+
+            $check = $pdo->prepare("SELECT id FROM user WHERE login = ?");
+            $check->execute([$login]);
+
+            if ($check->rowCount() === 0) {
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                $insert = $pdo->prepare(
+                    "INSERT INTO user (login, password) VALUES (?, ?)"
+                );
+
+                if ($insert->execute([$login, $hashed_password])) {
+                    $message = "<span style='color:green'>Inscription réussie !</span>";
+                } else {
+                    $message = "Erreur lors de l'inscription.";
+                }
+            } else {
+                $message = "Ce login est déjà utilisé.";
+            }
+        } else {
+            $message = "Les mots de passe ne correspondent pas.";
+        }
+    } else {
+        $message = "Veuillez remplir tous les champs.";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Inscription</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ <?php include('./navigation.php'); ?>
+
+
     <h1>Inscription</h1>
-</header>
+
 
 <main>
     <form method="post">
