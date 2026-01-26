@@ -43,9 +43,11 @@ $articles = $sql->fetchAll();
 </section>
 
 
+
+
   
    
-  <?php  include('./pagination.php');  
+<?php  include('./pagination.php');  
 ?>
 <button class="addMessage"><a href="addMessage.php">addMessage</a></button>
 
