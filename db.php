@@ -1,7 +1,7 @@
 <?php
 // Login à la base de donnée avec des variables, faciles a modifié si changement de mot de passe ou de db
 $host = 'localhost';
-$dbname = 'my-questbook';
+$dbname = 'my-guestbook';
 $username = 'root';
 $password = '';     
 

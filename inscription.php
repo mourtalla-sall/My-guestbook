@@ -1,6 +1,6 @@
 <?php
 
-
+require_once 'db.php';
 if (isset($_POST['submit'])) {
     $login = htmlspecialchars($_POST['login']);
     $password = $_POST['password'];
@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <title>Inscription</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
  <?php include('./navigation.php'); ?>

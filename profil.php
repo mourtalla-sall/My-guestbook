@@ -53,7 +53,7 @@ if (!$user) {
 <head>
     <meta charset="UTF-8">
     <title>Mon Profil</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
      <?php
@@ -74,10 +74,10 @@ if (!$user) {
                 <input type="text" name="login" value="<?php echo htmlspecialchars($user['login']); ?>" required>
                 <input type="submit" name="update_login" value="Enregistrer">
                 <a href="profil.php">Annuler</a>
-            </form>
+            </form> 
         <?php else: ?>
             <span><?php echo htmlspecialchars($user['login']); ?></span>
-            <a href="profil.php?edit=login"><button>Modifier</button></a>
+        <button> <a href="profil.php?edit=login">Modifier </a></button>
         <?php endif; ?>
              <p><strong>Mot de passe</strong></p>
 
@@ -86,8 +86,8 @@ if (!$user) {
                 <input type="submit" name="update_password" value="Enregistrer">
                 <a href="profil.php">Annuler</a>
         <?php else: ?>
-            <span>********</span>
-            <a href="profil.php?edit=password"><button>Modifier</button></a>
+            <span>********</span>   
+            <button><a href="profil.php?edit=password">Modifier</a></button>
         <?php endif; ?>
 
     <hr>
