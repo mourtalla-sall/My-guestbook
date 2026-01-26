@@ -1,4 +1,6 @@
 <?php
+require_once 'db.php';
+
 // Démarrage de la session avant tout
 if (!isset($_SESSION)) {
     session_start();
@@ -6,7 +8,6 @@ if (!isset($_SESSION)) {
 
 // Inclusion des fichiers nécessaires
 require_once './navigation.php'; // correction du nom du fichier
-require_once 'db.php';
 
 // Initialisation du message
 $message = "";

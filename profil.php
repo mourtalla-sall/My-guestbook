@@ -70,14 +70,12 @@ if (!$user) {
              <p><strong>Nom d'utilisateur</strong></p>
 
         <?php if (isset($_GET['edit']) && $_GET['edit'] == 'login'): ?>
-            <form method="post" action="profil.php">
                 <input type="text" name="login" value="<?php echo htmlspecialchars($user['login']); ?>" required>
                 <input type="submit" name="update_login" value="Enregistrer">
                 <a href="profil.php">Annuler</a>
-            </form>
         <?php else: ?>
             <span><?php echo htmlspecialchars($user['login']); ?></span>
-            <a href="profil.php?edit=login"><button>Modifier</button></a>
+            </button><a href="profil.php?edit=login">Modifier</a></button>
         <?php endif; ?>
              <p><strong>Mot de passe</strong></p>
 
@@ -87,7 +85,7 @@ if (!$user) {
                 <a href="profil.php">Annuler</a>
         <?php else: ?>
             <span>********</span>
-            <a href="profil.php?edit=password"><button>Modifier</button></a>
+            <button><a href="profil.php?edit=password">Modifier</a></button>
         <?php endif; ?>
 
     <hr>

@@ -46,9 +46,9 @@ if (isset($_POST['submit'])) {
      <?php
     include('./navigation.php')
     ?>
-<header class="inscription-header">
+
     <h1>Ajouter un Message</h1>
-</header>
+
 
 
 
